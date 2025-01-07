@@ -1,7 +1,8 @@
 export default {
   'env': {
     'browser': true,
-    'es6': true,
+    'node': true,
+    'es2021': true,
     'jest/globals': true
   },
   'extends': [
