@@ -15,7 +15,7 @@ jobs:
     steps:
 
       - name: Render Deployment
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: sws2apps/render-deployment@v1.8.0
         with:
           serviceId: ${{ 'srv-ctvp9a0gph6c73ceenv0' }}
