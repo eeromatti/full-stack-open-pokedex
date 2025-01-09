@@ -13,8 +13,10 @@ jobs:
     name: Deploy to Render
     runs-on: ubuntu-20.04
     steps:
+
       - name: Render Deployment
         uses: sws2apps/render-deployment@v1.8.0
+        if: ${{ github.event_name == 'push' }}
         with:
           serviceId: ${{ 'srv-ctvp9a0gph6c73ceenv0' }}
           apiKey: ${{ 'rnd_CcAFaXAeaoeppFfgvF6VXXeo6wDp' }}
