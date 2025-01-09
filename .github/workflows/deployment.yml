@@ -15,8 +15,8 @@ jobs:
     steps:
 
       - name: Render Deployment
-        uses: sws2apps/render-deployment@v1.8.0
         if: ${{ github.event_name == 'push' }}
+        uses: sws2apps/render-deployment@v1.8.0
         with:
           serviceId: ${{ 'srv-ctvp9a0gph6c73ceenv0' }}
           apiKey: ${{ 'rnd_CcAFaXAeaoeppFfgvF6VXXeo6wDp' }}
