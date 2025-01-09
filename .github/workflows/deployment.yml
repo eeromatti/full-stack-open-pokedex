@@ -10,16 +10,6 @@ jobs:
     name: Deploy to Render
     runs-on: ubuntu-20.04
     steps:
-      - name: Check Render Build Status
-        id: check-status
-        run: |
-          response=$(curl -s -X GET -H "Authorization: Bearer ${{ 'rnd_CcAFaXAeaoeppFfgvF6VXXeo6wDp' }}" \
-          https://api.render.com/v1/services/${{ 'srv-ctvp9a0gph6c73ceenv0' }})
-          if echo $response | grep -q '"status":"deploying"'; then
-            echo "A deployment is already in progress. Exiting..."
-            exit 1
-          fi
-
       - name: Render Deployment
         uses: sws2apps/render-deployment@v1.8.0
         with:
