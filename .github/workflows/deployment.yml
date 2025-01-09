@@ -8,12 +8,11 @@ jobs:
     name: Deploy to Render
     runs-on: ubuntu-20.04
     steps:
-      - name: Trigger deployment
-        uses: sws2apps/render-deployment@main #consider using pin for dependabot auto update
+      - name: Render Deployment
+        uses: sws2apps/render-deployment@v1.8.0
         with:
           serviceId: ${{ 'srv-ctvp9a0gph6c73ceenv0' }}
           apiKey: ${{ 'rnd_CcAFaXAeaoeppFfgvF6VXXeo6wDp' }}
           multipleDeployment: false #optional, default true
-      - name: Render Deployment
-        uses: sws2apps/render-deployment@v1.8.0
+
       
