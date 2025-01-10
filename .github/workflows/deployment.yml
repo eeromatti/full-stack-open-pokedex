@@ -32,7 +32,6 @@ jobs:
         if: ${{ success() }}
         with:
           severity: info
-          details: to https://pokedex-g542.onrender.com/ 
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
       - name: Build failed
@@ -40,7 +39,6 @@ jobs:
         if: ${{ failure() }}
         with:
           severity: error
-          details: Build failed! 
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
 
