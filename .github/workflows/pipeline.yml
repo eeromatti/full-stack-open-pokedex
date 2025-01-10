@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - main
-      - dev
 
 jobs:
-  simple_deployment_pipeline:
+  lint_and_test_pipeline:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
@@ -20,3 +19,5 @@ jobs:
         run: npm run eslint
       - name: Test
         run: npm run test
+
+    
