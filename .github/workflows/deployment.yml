@@ -1,7 +1,7 @@
 name: Deployment pipeline
 
 env:
-  CONDITION: ${{ contains(github.event.head_commit.message, '#skip') && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+  CONDITION: ${{ !contains(github.event.head_commit.message, '#skip') && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
 
 on:
   push:
@@ -15,7 +15,8 @@ jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout repository
+      - if: ${{ env.CONDITION == 'true' }}
+        name: Checkout repository
         uses: actions/checkout@v4
 
       - if: ${{ env.CONDITION == 'true' }}
@@ -30,7 +31,8 @@ jobs:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout repository
+      - if: ${{ env.CONDITION == 'true' }}
+        name: Checkout repository
         uses: actions/checkout@v4
         
       - if: ${{ env.CONDITION == 'true' }}
