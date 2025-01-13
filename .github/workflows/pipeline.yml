@@ -1,9 +1,10 @@
-name: Test pipeline
+name: Lint & test
 
 on:
   push:
     branches:
       - main
+      - test
 
 jobs:
   lint_and_test_pipeline:
