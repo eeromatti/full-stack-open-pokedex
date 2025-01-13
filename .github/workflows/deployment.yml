@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+      - dev
   pull_request:
     branches: [main]
     types: [opened, synchronize]
@@ -27,15 +28,15 @@ jobs:
           apiKey: ${{ secrets.API_KEY }}
           multipleDeployment: false
       
-      - name: A new version of Pokedex deployed
-        uses: BubbleProd/discord-webhook-notify@v2.0.1
+      - name: Discord Webhook Notify
+        uses: rjstone/discord-webhook-notify@v1.0.4
         if: ${{ success() }}
         with:
           severity: info
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
-      - name: Build failed
-        uses: BubbleProd/discord-webhook-notify@v2.0.1
+      - name: Discord Webhook Notify
+        uses: rjstone/discord-webhook-notify@v1.0.4
         if: ${{ failure() }}
         with:
           severity: error
