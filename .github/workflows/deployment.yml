@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+      - dev
   pull_request:
     branches: [main]
     types: [opened, synchronize]
@@ -26,6 +27,22 @@ jobs:
           serviceId: ${{ secrets.SERVICE_ID }}
           apiKey: ${{ secrets.API_KEY }}
           multipleDeployment: false
+      
+      - name: Discord Webhook Notify
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: ${{ success() }}
+        with:
+          severity: info
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
+      - name: Discord Webhook Notify
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: ${{ failure() }}
+        with:
+          severity: error
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
+
 
   tag_release:
     needs: [simple_deployment_pipeline]
